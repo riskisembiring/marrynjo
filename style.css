@@ -1,0 +1,150 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  background: black;
+  color: white;
+}
+
+body, html {
+  height: 100%;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg, #0d0d2b, #000000);
+  color: white;
+}
+
+img {
+  max-width: 30%;
+  height: auto;
+  border-radius: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+  /* margin-bottom: 20px; */
+  margin-top: 20px;
+}
+
+.whatsapp-icon {
+
+  max-width: 5%;
+  height: auto;
+  border-radius: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+  /* margin-bottom: 20px; */
+}
+
+/* Background Animasi */
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #0d0d2b, #000000);
+}
+
+.stars, .nebula, .aurora {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  z-index: -1;
+}
+
+.stars {
+  background: url('https://www.transparenttextures.com/patterns/stardust.png');
+  opacity: 0.2;
+  animation: moveStars 100s linear infinite;
+}
+
+.aurora {
+  background: radial-gradient(circle at center, #00f0ff88, transparent);
+  filter: blur(80px);
+  animation: pulse 10s infinite ease-in-out;
+  opacity: 0.5;
+}
+
+.nebula {
+  background: radial-gradient(circle at 30% 30%, #ff00ff22, transparent 60%);
+  filter: blur(100px);
+  opacity: 0.4;
+}
+
+/* Meteor efek */
+.meteor {
+  position: fixed;
+  width: 4px;
+  height: 80px;
+  background: linear-gradient(to bottom, white, transparent);
+  top: -100px;
+  left: calc(100% * var(--rand, 0.5));
+  transform: rotate(45deg);
+  animation: fall 1.5s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    top: 100vh;
+    left: calc(100% * var(--rand, 0.5) - 200px);
+    opacity: 0;
+  }
+}
+
+@keyframes moveStars {
+  0% { background-position: 0 0; }
+  100% { background-position: 1000px 1000px; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* Konten Utama */
+.content {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  padding: 0.75rem 2rem;
+  background: #00c3ff;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 30px;
+  box-shadow: 0 0 20px #00c3ff88;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: scale(1.1);
+}

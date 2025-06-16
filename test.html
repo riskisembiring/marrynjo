@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MARRYNJO | Landing Page</title>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary:#ff6f61;
+      --secondary:#7a5cff;
+    }
+
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+    body{
+      font-family:'Poppins',sans-serif;
+      color:#fff;
+      min-height:100dvh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      overflow-x:hidden;
+      background:linear-gradient(130deg,var(--primary),var(--secondary));
+      background-size:200% 200%;
+      animation:gradientShift 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes gradientShift{
+      0%{background-position:0% 50%;}
+      100%{background-position:100% 50%;}
+    }
+
+    .content{max-width:480px;padding:1rem;position:relative;}
+
+    .logo{
+      width:220px;height:auto;border-radius:1rem;margin:1.2rem auto;
+      box-shadow:0 8px 24px rgba(0,0,0,.25);
+    }
+
+    .title{font-size:2.2rem;font-weight:700;letter-spacing:1px;}
+    .subtitle{font-size:1rem;margin:0.75rem 0;}
+
+    .subtitle a{display:inline-block;transition:transform .3s ease;}
+    .subtitle a:hover{transform:scale(1.1);}
+
+    .whatsapp-icon, .instagram-icon{width:32px;height:32px;vertical-align:middle;}
+
+    .cta-button, .music-toggle{
+      margin-top:1rem;padding:0.8rem 2rem;font-size:1rem;color:#fff;
+      background:rgba(255,255,255,.15);border:2px solid #fff;border-radius:9999px;
+      backdrop-filter:blur(6px);cursor:pointer;
+      transition:transform .25s ease,background .25s ease;
+      display:inline-block;
+    }
+
+    .cta-button:hover, .music-toggle:hover{
+      transform:translateY(-4px) scale(1.05);
+      background:rgba(255,255,255,.25);
+    }
+
+    @media (min-width:600px){
+      .title{font-size:2.8rem;}
+      .subtitle{font-size:1.1rem;}
+      .logo{width:260px;}
+    }
+
+    .music-toggle {
+      margin-left: 0.5rem;
+      font-size:0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<main class="content">
+  <h1 class="title">WELCOME TO MARRYNJO</h1>
+  <img src="IMG_8415.jpg" alt="Marrynjo" class="logo">
+  <p class="subtitle">Kirim gambar tasnya ke
+    <a href="https://wa.me/6282274186885" target="_blank" rel="noopener">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
+    </a> Admin ya Kak, dan langsung di payment aja.
+  </p>
+  <p class="subtitle">Jangan lupa follow IG kita di bawah</p>
+  <p class="subtitle">
+    <a href="https://www.instagram.com/marrynjo7021" target="_blank" rel="noopener">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="instagram-icon">
+    </a>
+  </p>
+  <p class="subtitle">Terimakasih, happy shopping!</p>
+
+  <button class="cta-button" onclick="window.location.href='https://wa.me/6282274186885'">Hubungi Admin</button>
+  <button class="music-toggle" onclick="toggleMusic()">Musik: ON</button>
+</main>
+
+<!-- Background Music -->
+<audio id="bg-music" autoplay loop>
+  <source src="bossa-nova.mp3" type="audio/mpeg">
+  Browser kamu tidak mendukung audio.
+</audio>
+
+<!-- GSAP CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<script>
+  gsap.set('body',{visibility:'visible'});
+  const tl = gsap.timeline({defaults:{ease:'power2.out'}});
+  tl.from('.title',{y:-60,opacity:0,duration:1})
+    .from('.logo',{scale:0.6,opacity:0,duration:1},"-=0.6")
+    .from('.subtitle',{opacity:0,y:20,stagger:0.25,duration:0.8},"-=0.4")
+    .from('.cta-button',{opacity:0,scale:0.8,duration:0.6},"-=0.3")
+    .to('.cta-button',{y:-6,repeat:-1,yoyo:true,duration:1.4,ease:'sine.inOut'},"-=0.2");
+
+  // Toggle Music
+  const music = document.getElementById('bg-music');
+  const toggleBtn = document.querySelector('.music-toggle');
+  let isPlaying = true;
+
+  function toggleMusic() {
+    if (isPlaying) {
+      music.pause();
+      toggleBtn.textContent = "Musik: OFF";
+    } else {
+      music.play();
+      toggleBtn.textContent = "Musik: ON";
+    }
+    isPlaying = !isPlaying;
+  }
+</script>
+
+</body>
+</html>
